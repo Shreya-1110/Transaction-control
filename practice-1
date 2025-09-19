@@ -1,0 +1,39 @@
+ START TRANSACTION;
+INSERT INTO FeePayments (payment_id, student_name, amount, payment_date)
+VALUES 
+    (1, 'Ashish', 5000.00, '2024-06-01'),
+    (2, 'Smaran', 4500.00, '2024-06-02'),
+    (3, 'Vaibhav', 5500.00, '2024-06-03');
+COMMIT;
+
+
+
+BEGIN TRANSACTION;
+INSERT INTO FeePayments VALUES (9, 'Kiran', 5200.00, '2024-06-10');
+
+INSERT INTO FeePayments VALUES (1, 'Duplicate', 3000.00, '2024-06-11');
+ROLLBACK;
+
+START TRANSACTION;
+INSERT INTO FeePayments (payment_id, student_name, amount, payment_date)
+VALUES (10, 'Rahul', 4800.00, '2024-06-12');
+
+INSERT INTO FeePayments (payment_id, student_name, amount, payment_date)
+VALUES (11, NULL, 5000.00, '2024-06-13');
+ROLLBACK;
+
+
+START TRANSACTION;
+INSERT INTO FeePayments (payment_id, student_name, amount, payment_date)
+VALUES
+    (12, 'Priya', 4600.00, '2024-06-14'),
+    (13, 'Rohit', 5100.00, '2024-06-15');
+COMMIT;
+
+SELECT * FROM FeePayments ORDER BY payment_id;
+ 
+
+
+
+
+
